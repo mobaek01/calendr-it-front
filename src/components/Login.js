@@ -36,17 +36,17 @@ const Login = (props) => {
                         <label htmlFor="password">Password: </label>
                         <input type="password" name="password" onChange={handleChange}/>
                         <br />
-                        <input type="submit" />
+                        <input className="smallBtn" type="submit" />
                     </form>
                     {props.error ?
                     <p>{props.error}</p>
                     :
                     <></>
                     }
-                    <button onClick={hideLogin}>Close</button>
+                    <button className="smallBtn" onClick={hideLogin}>Close</button>
                 </div>
             :
-                <button onClick={revealLogin}>Login</button>
+                <button className = "button" onClick={revealLogin}>Login</button>
             }
         </>
     )

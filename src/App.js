@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import moment from 'moment'
+import store from './redux/store.js'
 
 // COMPONENTS //
 import Add from './components/Add'
@@ -10,6 +11,12 @@ import Login from './components/Login'
 
 const App = () => {
 
+    let componentDidMount = () => {
+        store.subscribe(() => {
+            console.log(store.getState());
+        })
+    }
+
     // backend urls
     const backend_url = "http://localhost:3000"
     // const backend_url = "https://calendr-it.herokuapp.com"
@@ -18,6 +25,7 @@ const App = () => {
     let [users, setUsers] = useState([])
     let [error, setError] = useState('')
     let [currentUser, setCurrentUser] = useState({})
+
     let [sideNav, setSideNav] = useState(false)
 
     /////////////////////////////// TODO ////////////////////////////////////
@@ -36,8 +44,8 @@ const App = () => {
         axios
             .post(backend_url + '/todos', addTodo)
             .then((response) => {
-                // console.log(response);
-                // console.log(addTodo);
+                console.log(response);
+                console.log(addTodo);
                 getTodos()
             })
     }
@@ -71,7 +79,7 @@ const App = () => {
             .get(backend_url + '/todos/userCreate')
             .then((response) => {
                 setUsers(response.data)
-                console.log(response.data);
+                // console.log(response.data);
             })
     }
 
@@ -90,10 +98,10 @@ const App = () => {
             .put(backend_url + '/todos/login', checkUser)
             .then((response) => {
                 setCurrentUser(response.data)
-                console.log(response.data);
+                // console.log(response.data);
                 localStorage.setItem('user', JSON.stringify(response.data))
                 setError(response.data.error)
-                console.log(response.data.error);
+                // console.log(response.data.error);
 
             })
     }
@@ -122,6 +130,7 @@ const App = () => {
     useEffect(() => {
         getTodos()
         getUsers()
+        componentDidMount()
     },[])
 
     return (
@@ -130,14 +139,15 @@ const App = () => {
                 {sideNav ?
                 <>
                     <div className = "sideNav">
-                        <h3><u>Welcome to Calendr-It</u></h3>
                         <div className = 'navTop'>
                             {currentUser.length === 1 ?
                                 <div className = "userInfo">
-                                    <h4>Welcome, {currentUser[0].user_name}</h4>
-                                    <button onClick={handleLogout}>Logout</button>
+                                    <div className = "welcome">
+                                        <h3>Welcome to Calendr-It, "<u>{currentUser[0].user_name}</u>"</h3>
+                                        <button className = "button" onClick={handleLogout}>Logout</button>
+                                    </div>
                                     <br />
-                                    <Add handleCreate={handleCreate}/>
+                                    <Add handleCreate={handleCreate} currentUser={currentUser}/>
                                 </div>
                             :
                                 <div className = "loggedOut">

@@ -4,6 +4,25 @@ body {
     font-family: 'Cairo', sans-serif;
 }
 
+.button {
+    width: 8vw;
+    height: 8vh;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1em;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black;
+}
+
+.smallBtn {
+    width: 6vw;
+    height: 6vh;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1em;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black;
+    margin-bottom: 2%;
+}
+
 .container {
     width: 100%;
     height: 100%;
@@ -42,6 +61,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.logoutBtn {
+    width: 8vw;
+    height: 8vh;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1em;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black;
 }
 
 .loggedOut {
@@ -92,3 +120,32 @@ body {
 
 
 /* ======================================================================== */
+
+.addForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.textarea {
+    resize: vertical;
+    height: 40vh;
+    width: 20vw;
+}
+
+.addField {
+    text-align: center;
+    width: 15vw;
+}
+
+.addSubmit {
+    width: 6vw;
+    height: 6vh;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1em;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black;
+    margin-bottom: 2%;
+}

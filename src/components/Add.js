@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import store from '../redux/store.js'
 
 const Add = (props) => {
 
@@ -14,6 +15,10 @@ const Add = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         props.handleCreate(newTodo)
+        store.dispatch({
+            type:'ADD',
+            todo:{...newTodo}
+        })
     }
 
     const revealAdd = () => {
@@ -29,33 +34,24 @@ const Add = (props) => {
             {showAdd ?
                 <div className = "addDiv">
                     <h3>Add a Todo</h3>
-                    <form className="addForm"onSubmit={handleSubmit}>
+                    <form className="addForm" onSubmit={handleSubmit}>
                         <label htmlFor="title">Title:</label>
-                        <br />
-                        <input type="text" name="title" onChange={handleChange}/>
-                        <br />
+                        <input className="addField" type="text" name="title" onChange={handleChange}/>
                         <label htmlFor="description">Description:</label>
-                        <br />
-                        <textarea name="description" onChange={handleChange} />
-                        <br />
+                        <textarea className="textarea" name="description" onChange={handleChange} />
                         <label htmlFor="todo_date">Due Date:</label>
-                        <br />
-                        <input type="date" name="todo_date" onChange={handleChange}/>
-                        <br />
+                        <input className="addField" type="date" name="todo_date" onChange={handleChange}/>
                         <label htmlFor="start_time">Start Time:</label>
-                        <br />
-                        <input type="time" name="start_time" onChange={handleChange}/>
-                        <br />
+                        <input className="addField" type="time" name="start_time" onChange={handleChange}/>
                         <label htmlFor="end_time">End Time:</label>
+                        <input className="addField" type="time" name="end_time" onChange={handleChange}/>
                         <br />
-                        <input type="time" name="end_time" onChange={handleChange}/>
-                        <br />
-                        <input type="submit" value="Add Todo"/>
+                        <input className="smallBtn" type="submit" value="Add Todo"/>
                     </form>
-                    <button onClick={hideAdd}>Close</button>
+                    <button className="button" onClick={hideAdd}>Close</button>
                 </div>
                 :
-                <button onClick={revealAdd}>Add</button>
+                <button className="button" onClick={revealAdd}>Add</button>
             }
 
         </>

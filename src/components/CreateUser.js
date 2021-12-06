@@ -36,12 +36,12 @@ const CreateUser = (props) => {
                         <label htmlFor="password">Password: </label>
                         <input type="password" name="password" onChange={handleChange}/>
                         <br />
-                        <input type="submit" />
+                        <input className="smallBtn" type="submit" />
                     </form>
-                    <button onClick={hideRegister}>Close</button>
+                    <button className="smallBtn" onClick={hideRegister}>Close</button>
                 </div>
             :
-            <button onClick={revealRegister}>Register</button>
+            <button className = "button" onClick={revealRegister}>Register</button>
             }
 
         </>
