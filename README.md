@@ -1,7 +1,7 @@
 # Calendr-It
 
 ### Approach Taken
-First, I started with setting up the standard PERN Stack of the application. I implemented all CRUD functionality (READ, CREATE, UPDATE, DELETE). 
+First, I started with setting up the standard PERN Stack of the application. I implemented all CRUD functionality (READ, CREATE, UPDATE, DELETE).
 
 ### User Stories
 * A new user is able to create an account to start using Calendr-It
@@ -19,7 +19,7 @@ First, I started with setting up the standard PERN Stack of the application. I i
 * The user is able to edit a specific todo and also delete a specific todo
 
 ### Technologies Used
-* PERN STACK
+PERN STACK
     * Postgres
     * Express.js
     * React
@@ -35,5 +35,5 @@ First, I started with setting up the standard PERN Stack of the application. I i
 3. When using the addTodos dispatcher, the store is not recognizing the state and is coming out undefined
 
 ### Live Links
-Back-end: https://calendr-it.herokuapp.com/todos
+Back-end: https://calendr-it.herokuapp.com/todos  
 Front-end: https://calendr-it-front.herokuapp.com/
