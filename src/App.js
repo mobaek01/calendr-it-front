@@ -1,38 +1,35 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import moment from 'moment'
 import store from './redux/store.js'
 
 // COMPONENTS //
 import Add from './components/Add'
-import Edit from './components/Edit'
 import CreateUser from './components/CreateUser'
 import Login from './components/Login'
+import TodoList from './components/TodoList'
+import TodoCalendar from './components/Calendar'
 
 const App = () => {
-
-    let componentDidMount = () => {
-        store.subscribe(() => {
-            console.log(store.getState());
-        })
-    }
 
     // backend urls
     const backend_url = "http://localhost:3000"
     // const backend_url = "https://calendr-it.herokuapp.com"
 
     let [todos, setTodos] = useState([])
+    console.log(todos);
     let [users, setUsers] = useState([])
     let [error, setError] = useState('')
     let [currentUser, setCurrentUser] = useState({})
-
+    let [currentUserID, setCurrentUserID] = useState()
+    console.log(currentUserID);
     let [sideNav, setSideNav] = useState(false)
+    let [view, setView] = useState(true)
 
     /////////////////////////////// TODO ////////////////////////////////////
     // READ
     const getTodos = () => {
         axios
-            .get(backend_url + '/todos')
+            .get(backend_url + '/todos/' + currentUserID)
             .then((response) => {
                 setTodos(response.data)
                 // console.log(todos);
@@ -100,7 +97,9 @@ const App = () => {
                 setCurrentUser(response.data)
                 // console.log(response.data);
                 localStorage.setItem('user', JSON.stringify(response.data))
+                localStorage.setItem('user_id', JSON.stringify(response.data[0].user_id))
                 setError(response.data.error)
+                setCurrentUserID(response.data[0].user_id)
                 // console.log(response.data.error);
 
             })
@@ -111,11 +110,18 @@ const App = () => {
         localStorage.clear()
     }
 
+
+
     useEffect(() => {
         const loggedInUser = localStorage.getItem('user');
         if (loggedInUser) {
             const foundUser = JSON.parse(loggedInUser)
             setCurrentUser(foundUser)
+        }
+        const loggedInId = localStorage.getItem('user_id')
+        if (loggedInId) {
+            const foundId = JSON.parse(loggedInId)
+            setCurrentUserID(foundId)
         }
     }, [])
 
@@ -127,11 +133,21 @@ const App = () => {
 
     //=====================================================================//
 
+    const showCalendar = () => {
+        view ? setView(false) : setView(true)
+    }
+
+    const showList = () => {
+        setView('list')
+    }
+
+    //=====================================================================//
+
     useEffect(() => {
-        getTodos()
-        getUsers()
-        componentDidMount()
-    },[])
+        if (currentUserID){
+            getTodos()
+        }
+    },[currentUserID])
 
     return (
         <div className="container">
@@ -175,21 +191,16 @@ const App = () => {
             <div className="containerRight">
                 <div className = "mainBody">
                     <h1>Plan your LIFE away</h1>
-                    <div>
-                        {todos.map((todo) => {
-                            return(
-                                <div key={todo.todo_id}>
-                                    <h3>Title: {todo.title}</h3>
-                                    <h3>Description: {todo.description}</h3>
-                                    <h3>Due Date: {moment(todo.todo_date).format('MM/DD/YYYY')}</h3>
-                                    <h3>Start Time: {moment(todo.start_time, "HH:mm").format('hh:mm a')}</h3>
-                                    <h3>End Time: {moment(todo.end_time, "HH:mm").format('hh:mm a')}</h3>
-                                    <button onClick={handleDelete} value={todo.todo_id}>DELETE</button>
-                                    <Edit handleUpdate={handleUpdate} todo={todo}/>
-                                </div>
-                            )
-                        })}
-                    </div>
+                    <button className="smallBtn switch" onClick={showCalendar}>Switch View</button>
+                    {view ?
+                    <>
+                        <TodoList handleDelete={handleDelete} handleUpdate={handleUpdate} todos={todos}/>
+                    </>
+                    :
+                    <>
+                        <TodoCalendar todos={todos}/>
+                    </>
+                    }
                 </div>
             </div>
         </div>

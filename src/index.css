@@ -31,7 +31,6 @@ body {
 
 .containerLeft {
     width: 30%;
-    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -50,6 +49,7 @@ body {
 .sideNav {
     padding: 2%;
     width: 90%;
+    height: 100%;
     background: slategrey;
     text-align: center;
     display: flex;
@@ -111,13 +111,43 @@ body {
 /* ////////////////////////////////// BODY //////////////////////////////// */
 
 .mainBody {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.todoList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
+.todoItem {
+    border: 1px solid black;
+    margin-bottom: 1%;
+    padding: 2%;
+    text-align: center;
+}
+
+.todoDetail {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.times {
+    display: flex;
+    justify-content: space-around;
+}
+
+.editDelete {
+    display: flex;
+    justify-content: space-around;
+}
+
+.switch {
+    width: 20vw;
+}
 
 /* ======================================================================== */
 
@@ -149,3 +179,5 @@ body {
     box-shadow: 5px 5px 10px black;
     margin-bottom: 2%;
 }
+
+/* ======================================================================== */

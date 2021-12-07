@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+import { updatedTodos } from '../redux/reducer'
+import { mapStateToProps, mapDispatchToProps } from '../components/TodoList'
+
 const Edit = (props) => {
 
     const [editTodo, setEditTodo] = useState(props.todo)
@@ -12,6 +15,12 @@ const Edit = (props) => {
         event.preventDefault()
         props.handleUpdate(editTodo)
     }
+
+    // onClick={(
+    //     updatedTodos({
+    //         ...editTodo
+    //     })
+    // )}
 
     return(
         <>
@@ -38,7 +47,7 @@ const Edit = (props) => {
                     <br />
                     <input type="time" name="end_time" onChange={handleChange} value={editTodo.end_time}/>
                     <br />
-                    <input type="submit" value="Edit Todo"/>
+                    <input type="submit" value="Edit Todo" />
                 </form>
             </details>
         </>

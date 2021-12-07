@@ -1,13 +1,8 @@
-import { createStore } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
+import { reducer } from './reducer'
 
-let todos = (state = [], action) => {
-    switch(action.type){
-        case 'ADD':
-            return [...state, action.todo]
-        default:
-            return state
-    }
-}
+const store = configureStore({
+    reducer:reducer
+})
 
-let store = createStore(todos)
 export default store
