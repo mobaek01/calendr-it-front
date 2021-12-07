@@ -1,4 +1,6 @@
 // docs: https://github.com/NikValdez/reactCalendarTut/blob/master/src/App.js
+// docs: https://jquense.github.io/react-big-calendar/examples/index.html#api
+// youtube: https://www.youtube.com/watch?v=lyRP_D0qCfk&ab_channel=DarwinTech
 
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
@@ -53,7 +55,7 @@ const TodoCalendar = (props) => {
 
     return (
         <div>
-            <Calendar className="calendar" localizer={localizer} events={events} startAccessor="start" endAccessor="end" style={{height:'70vh', width:'70vw', margin:'50px'}} />
+            <Calendar className="calendar" localizer={localizer} events={events} startAccessor="start" endAccessor="end" style={{height:'70vh', width:'70vw'}} />
         </div>
     )
 }

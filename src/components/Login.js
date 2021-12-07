@@ -29,11 +29,14 @@ const Login = (props) => {
         <>
             {showLogin ?
                 <div className = "loginDiv">
-                    <h3>Login</h3>
-                    <form onSubmit={handleSubmit}>
+                    <h3><u>Login</u></h3>
+                    <form className="formDiv" onSubmit={handleSubmit}>
                         <label htmlFor="user_name">Username: </label>
+                        <br />
                         <input type="text" name="user_name" onChange={handleChange}/>
+                        <br />
                         <label htmlFor="password">Password: </label>
+                        <br />
                         <input type="password" name="password" onChange={handleChange}/>
                         <br />
                         <input className="smallBtn" type="submit" />
@@ -46,7 +49,7 @@ const Login = (props) => {
                     <button className="smallBtn" onClick={hideLogin}>Close</button>
                 </div>
             :
-                <button className = "button" onClick={revealLogin}>Login</button>
+                <button className = "button revealBtn" onClick={revealLogin}>Login</button>
             }
         </>
     )

@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
 
-import { updatedTodos } from '../redux/reducer'
-import { mapStateToProps, mapDispatchToProps } from '../components/TodoList'
-
 const Edit = (props) => {
 
     const [editTodo, setEditTodo] = useState(props.todo)

@@ -1,96 +1,113 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
 
 body {
+    margin-left: 1%;
+    margin-right: 1%;
     font-family: 'Cairo', sans-serif;
 }
 
 .button {
     width: 8vw;
-    height: 8vh;
+    height: 3vh;
     font-family: 'Cairo', sans-serif;
-    font-size: 1em;
     border-radius: 10px;
     box-shadow: 5px 5px 10px black;
 }
 
+.button:hover {
+    background: cadetblue;
+}
+
 .smallBtn {
-    width: 6vw;
-    height: 6vh;
+    width: 5vw;
+    height: 3vh;
     font-family: 'Cairo', sans-serif;
-    font-size: 1em;
     border-radius: 10px;
     box-shadow: 5px 5px 10px black;
     margin-bottom: 2%;
 }
 
+.smallBtn:hover {
+    background: cornflowerblue;
+}
+
 .container {
     width: 100%;
-    height: 100%;
-    display: flex;
-}
-
-.containerLeft {
-    width: 30%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.containerRight {
-    width: 70%;
-    height: 100%;
-    display: flex;
-    align-content: flex-start;
-    justify-content: center;
 }
 
 /* ///////////////////////////// NAVIGATION BAR /////////////////////////// */
 
-.sideNav {
-    padding: 2%;
-    width: 90%;
-    height: 100%;
-    background: slategrey;
-    text-align: center;
+.navContainer {
     display: flex;
     flex-direction: column;
+}
+
+.navbar {
+    background: slategray;
+    height: 20vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+
+}
+
+.navTitle {
+    margin-left: 5%;
+}
+
+.menu-bars {
+    margin-left: 1rem;
+    background: none;
+}
+
+.nav-menu {
+    background: slategray;
+    width: 20%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    left: -100%;
+    transition: 1s;
+    margin-left: 1%;
+}
+
+.nav-menu.active {
+    left:0;
+    transition: .7s;
+}
+
+.nav-menu-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
 }
 
-.navTop {
+.welcome {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.logoutBtn {
-    width: 8vw;
-    height: 8vh;
-    font-family: 'Cairo', sans-serif;
-    font-size: 1em;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px black;
-}
-
-.loggedOut {
+.userInfo {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
-.loggedOutLeft {
-    width: 50%;
-    margin-right: 4%;
-}
-
-.loggedOutRight {
-    width: 50%;
-}
-
-.navBot {
+.addDiv {
     display: flex;
-    justify-content: center;
-    margin-top: 4%;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -6%;
+}
+
+.navLinks {
+    display: flex;
+    margin-top: 2%;
 }
 
 .navBtn {
@@ -99,32 +116,43 @@ body {
 }
 
 .navBtnImg {
-    width: 4vw;
+    width: 3vw;
 }
 
 .socialBtn {
-    width: 3vw;
+    width: 2.5vw;
+    margin-left: 3%;
 }
 
 /* ======================================================================== */
 
 /* ////////////////////////////////// BODY //////////////////////////////// */
 
-.mainBody {
-    width: 100%;
+.mainbody {
+    position: relative;
+    left: 15%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    width: 75%;
+    height: 100%;
+    transition: 1s;
+}
+
+.mainbody.left {
+    left: 26%;
+    transition: .7s;
 }
 
 .todoList {
     width: 100%;
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 .todoItem {
-    border: 1px solid black;
     margin-bottom: 1%;
     padding: 2%;
     text-align: center;
@@ -133,6 +161,7 @@ body {
 .todoDetail {
     border: 1px solid black;
     width: 100%;
+    background: ghostwhite;
 }
 
 .times {
@@ -142,12 +171,31 @@ body {
 
 .editDelete {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .switch {
     width: 20vw;
+    margin-top: 1%;
 }
+
+.loggedOut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.loginDiv {
+    margin-top: 4%;
+}
+
+.formDiv {
+    margin-top: -15%;
+}
+
+
 
 /* ======================================================================== */
 
@@ -161,8 +209,8 @@ body {
 
 .textarea {
     resize: vertical;
-    height: 40vh;
-    width: 20vw;
+    height: 10vh;
+    width: 15vw;
 }
 
 .addField {
@@ -178,6 +226,10 @@ body {
     border-radius: 10px;
     box-shadow: 5px 5px 10px black;
     margin-bottom: 2%;
+}
+
+.calendar {
+    position: relative;
 }
 
 /* ======================================================================== */

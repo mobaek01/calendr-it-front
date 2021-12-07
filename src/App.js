@@ -1,13 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import store from './redux/store.js'
 
 // COMPONENTS //
-import Add from './components/Add'
-import CreateUser from './components/CreateUser'
-import Login from './components/Login'
 import TodoList from './components/TodoList'
 import TodoCalendar from './components/Calendar'
+import SideNav from './components/SideNav'
 
 const App = () => {
 
@@ -16,13 +13,13 @@ const App = () => {
     // const backend_url = "https://calendr-it.herokuapp.com"
 
     let [todos, setTodos] = useState([])
-    console.log(todos);
     let [users, setUsers] = useState([])
     let [error, setError] = useState('')
+    let [loginMessage, setLoginMessage] = useState('')
     let [currentUser, setCurrentUser] = useState({})
     let [currentUserID, setCurrentUserID] = useState()
-    console.log(currentUserID);
-    let [sideNav, setSideNav] = useState(false)
+
+    let [sidebar, setSidebar] = useState(false)
     let [view, setView] = useState(true)
 
     /////////////////////////////// TODO ////////////////////////////////////
@@ -87,6 +84,8 @@ const App = () => {
                 // console.log(response);
                 // console.log(addTodo);
                 getUsers()
+                // console.log(response.data.message);
+                setLoginMessage(response.data.message)
             })
     }
 
@@ -107,10 +106,9 @@ const App = () => {
 
     const handleLogout = () => {
         setCurrentUser({})
+        setTodos([])
         localStorage.clear()
     }
-
-
 
     useEffect(() => {
         const loggedInUser = localStorage.getItem('user');
@@ -124,12 +122,6 @@ const App = () => {
             setCurrentUserID(foundId)
         }
     }, [])
-
-    //=====================================================================//
-
-    const revealSideNav = () => {
-        sideNav ? setSideNav(false) : setSideNav(true)
-    }
 
     //=====================================================================//
 
@@ -151,57 +143,18 @@ const App = () => {
 
     return (
         <div className="container">
-            <div className="containerLeft">
-                {sideNav ?
+            <SideNav currentUser={currentUser} handleLogout={handleLogout} handleCreate={handleCreate} handleUserCreate={handleUserCreate} loginMessage={loginMessage} handleLogin={handleLogin} error={error} sidebar={sidebar} setSidebar={setSidebar}/>
+            <div className = {sidebar ? 'mainbody left' : 'mainbody'}>
+                <button className="smallBtn switch" onClick={showCalendar}>Switch View</button>
+                {view ?
                 <>
-                    <div className = "sideNav">
-                        <div className = 'navTop'>
-                            {currentUser.length === 1 ?
-                                <div className = "userInfo">
-                                    <div className = "welcome">
-                                        <h3>Welcome to Calendr-It, "<u>{currentUser[0].user_name}</u>"</h3>
-                                        <button className = "button" onClick={handleLogout}>Logout</button>
-                                    </div>
-                                    <br />
-                                    <Add handleCreate={handleCreate} currentUser={currentUser}/>
-                                </div>
-                            :
-                                <div className = "loggedOut">
-                                    <div className="loggedOutLeft">
-                                        <CreateUser handleUserCreate={handleUserCreate}/>
-                                    </div>
-                                    <div className="loggedOutRight">
-                                        <Login handleLogin={handleLogin} error={error}/>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                        <div className = "navBot">
-                            <a href="www.linkedin.com/in/moses-baek"><img className="socialBtn" src="/linkedin.png" alt=""/></a>
-                            <a href="https://github.com/mobaek01"><img className="socialBtn" src="/github.png" alt=""/></a>
-                        </div>
-                    </div>
+                    <TodoCalendar todos={todos}/>
                 </>
                 :
-                <></>}
-                <div className="sidenavToggle">
-                    <button className = "navBtn" onClick={revealSideNav}><img className = "navBtnImg" src ="/3lines.png" alt=""/></button>
-                </div>
-            </div>
-            <div className="containerRight">
-                <div className = "mainBody">
-                    <h1>Plan your LIFE away</h1>
-                    <button className="smallBtn switch" onClick={showCalendar}>Switch View</button>
-                    {view ?
-                    <>
-                        <TodoList handleDelete={handleDelete} handleUpdate={handleUpdate} todos={todos}/>
-                    </>
-                    :
-                    <>
-                        <TodoCalendar todos={todos}/>
-                    </>
-                    }
-                </div>
+                <>
+                    <TodoList handleDelete={handleDelete} handleUpdate={handleUpdate} todos={todos}/>
+                </>
+                }
             </div>
         </div>
     )
