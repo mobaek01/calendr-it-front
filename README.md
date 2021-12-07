@@ -19,14 +19,14 @@ First, I started with setting up the standard PERN Stack of the application. I i
 * The user is able to edit a specific todo and also delete a specific todo
 
 ### Technologies Used
-PERN STACK
-    * Postgres
-    * Express.js
-    * React
-        * React-Big-Calendar
-        * Moment
-        * Axios
-    * Node.js
+PERN STACK  
+* Postgres
+* Express.js
+* React
+    * React-Big-Calendar
+    * Moment
+    * Axios
+* Node.js
 
 ### Unsolved Problems
 1. Within the calendar view of the application, the todos will only appear once the page has been reloaded
