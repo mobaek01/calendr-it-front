@@ -38,8 +38,8 @@ const App = () => {
         axios
             .post(backend_url + '/todos', addTodo)
             .then((response) => {
-                console.log(response);
-                console.log(addTodo);
+                // console.log(response);
+                // console.log(addTodo);
                 getTodos()
             })
     }
@@ -148,11 +148,11 @@ const App = () => {
                 <button className="smallBtn switch" onClick={showCalendar}>Switch View</button>
                 {view ?
                 <>
-                    <TodoCalendar todos={todos}/>
+                    <TodoList handleDelete={handleDelete} handleUpdate={handleUpdate} todos={todos}/>
                 </>
                 :
                 <>
-                    <TodoList handleDelete={handleDelete} handleUpdate={handleUpdate} todos={todos}/>
+                    <TodoCalendar todos={todos}/>
                 </>
                 }
             </div>

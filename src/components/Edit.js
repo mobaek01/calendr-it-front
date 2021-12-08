@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { updatedTodos } from '../redux/reducer'
+
 const Edit = (props) => {
+
+    const todoArr = useSelector((state) => state.todos)
+    console.log(todoArr);
+    const dispatch = useDispatch()
 
     const [editTodo, setEditTodo] = useState(props.todo)
 
@@ -12,12 +19,6 @@ const Edit = (props) => {
         event.preventDefault()
         props.handleUpdate(editTodo)
     }
-
-    // onClick={(
-    //     updatedTodos({
-    //         ...editTodo
-    //     })
-    // )}
 
     return(
         <>
@@ -44,7 +45,7 @@ const Edit = (props) => {
                     <br />
                     <input type="time" name="end_time" onChange={handleChange} value={editTodo.end_time}/>
                     <br />
-                    <input type="submit" value="Edit Todo" />
+                    <input onClick={() => dispatch(updatedTodos(editTodo))}className="smallBtn" type="submit" value="Edit Todo" />
                 </form>
             </details>
         </>

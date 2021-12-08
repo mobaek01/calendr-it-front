@@ -1,11 +1,17 @@
 import React from 'react'
 import moment from 'moment'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { removeTodos } from '../redux/reducer'
+
 import Edit from './Edit'
 
-// removeTodos(todo.todo_id)
-
 const TodoList = (props) => {
+
+    const todoArr = useSelector((state) => state.todos)
+    console.log(todoArr);
+    const dispatch = useDispatch()
+
     return(
         <div className="todoList">
             <h1><u>Your Todo List</u></h1>
@@ -26,7 +32,7 @@ const TodoList = (props) => {
                                     <h3 className="todoDetail">End Time: {moment(todo.end_time, "HH:mm").format('hh:mm a')}</h3>
                                 </div>
                                 <div className="editDelete">
-                                    <button className="smallButton" onClick={props.handleDelete} value={todo.todo_id}>DELETE</button>
+                                    <button className="smallBtn" onClick={props.handleDelete,()=>dispatch(removeTodos(todo))} value={todo.todo_id}>DELETE</button>
                                     <Edit handleUpdate={props.handleUpdate} todo={todo}/>
                                 </div>
                                 <hr />

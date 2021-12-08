@@ -4,7 +4,7 @@ import { addTodos } from '../redux/reducer'
 
 const Add = (props) => {
 
-    const todoArr = useSelector((state) => state)
+    const todoArr = useSelector((state) => state.todos)
     console.log(todoArr);
     const dispatch = useDispatch()
 
@@ -25,6 +25,7 @@ const Add = (props) => {
     return(
         <>
             <div className = "addDiv">
+                <p>{todoArr.title}</p>
                 <h3>Add a Todo</h3>
                 <form className="addForm" onSubmit={handleSubmit}>
                     <label htmlFor="title">Title *:</label>
@@ -38,7 +39,7 @@ const Add = (props) => {
                     <label htmlFor="end_time">End Time *:</label>
                     <input className="addField" type="time" name="end_time" onChange={handleChange} />
                     <br />
-                    <input className="smallBtn" type="submit" value="Add Todo" onClick={() => dispatch(addTodos())}/>
+                    <input className="smallBtn" type="submit" value="Add Todo" onClick={() => dispatch(addTodos(newTodo))}/>
                 </form>
             </div>
         </>

@@ -1,7 +1,3 @@
-// docs: https://github.com/NikValdez/reactCalendarTut/blob/master/src/App.js
-// docs: https://jquense.github.io/react-big-calendar/examples/index.html#api
-// youtube: https://www.youtube.com/watch?v=lyRP_D0qCfk&ab_channel=DarwinTech
-
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar'

@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export const todosSlice = createSlice({
     name: 'todos',
-    initialState: {},
+    initialState: [],
     reducers:{
         addTodos:(todosArr, action) => {
-            return[...todosArr, action.payload]
+            return [...todosArr, action.payload]
         },
         removeTodos:(todosArr, action) => {
             return todosArr.filter((item) => item.todo_id !== action.payload)
