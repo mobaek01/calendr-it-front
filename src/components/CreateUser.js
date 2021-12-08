@@ -41,7 +41,8 @@ const CreateUser = (props) => {
                         <input type="password" name="password" onChange={handleChange}/>
                         <br />
                         <input className="smallBtn" type="submit" />
-                        {props.loginMessage}
+                        <br />
+                        <p>{props.loginMessage}</p>
                     </form>
                     <button className="smallBtn" onClick={hideRegister}>Close</button>
                 </div>
