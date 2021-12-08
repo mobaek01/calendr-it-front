@@ -46,7 +46,7 @@ const TodoCalendar = (props) => {
 
     useEffect(() => {
         setEvents(eventFinder())
-    },[])
+    },[props.todos])
 
 
     return (

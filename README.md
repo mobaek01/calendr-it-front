@@ -40,9 +40,7 @@ PERN STACK
 Heroku
 
 ### Unsolved Problems
-1. Within the calendar view of the application, the todos will only appear once the page has been reloaded
-    * Issue: The { useEffect } of the Calendar component does not run quickly enough
-2. When using the updatedTodos & removeTodos dispatchers, the global state does not update
+1. When using the updatedTodos & removeTodos dispatchers, the global state does not update
     * removeTodos: The delete button is currently a button that is used to delete the specific todo from the database and I am unable to
 
 ### Future Impovements/Additions

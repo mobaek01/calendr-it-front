@@ -32,7 +32,7 @@ const TodoList = (props) => {
                                     <h3 className="todoDetail">End Time: {moment(todo.end_time, "HH:mm").format('hh:mm a')}</h3>
                                 </div>
                                 <div className="editDelete">
-                                    <button className="smallBtn" onClick={props.handleDelete,()=>dispatch(removeTodos(todo))} value={todo.todo_id}>DELETE</button>
+                                    <button className="smallBtn" onClick={props.handleDelete} value={todo.todo_id}>DELETE</button>
                                     <Edit handleUpdate={props.handleUpdate} todo={todo}/>
                                 </div>
                                 <hr />

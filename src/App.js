@@ -9,8 +9,8 @@ import SideNav from './components/SideNav'
 const App = () => {
 
     // backend urls
-    const backend_url = "http://localhost:3000"
-    // const backend_url = "https://calendr-it.herokuapp.com"
+    // const backend_url = "http://localhost:3000"
+    const backend_url = "https://calendr-it.herokuapp.com"
 
     let [todos, setTodos] = useState([])
     let [users, setUsers] = useState([])
