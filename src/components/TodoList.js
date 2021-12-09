@@ -1,16 +1,10 @@
 import React from 'react'
 import moment from 'moment'
 
-import { useSelector, useDispatch } from 'react-redux'
-import { removeTodos } from '../redux/reducer'
-
 import Edit from './Edit'
 
 const TodoList = (props) => {
 
-    const todoArr = useSelector((state) => state.todos)
-    console.log(todoArr);
-    const dispatch = useDispatch()
 
     return(
         <div className="todoList">

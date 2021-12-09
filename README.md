@@ -41,7 +41,8 @@ Heroku
 
 ### Unsolved Problems
 1. When using the updatedTodos & removeTodos dispatchers, the global state does not update
-    * removeTodos: The delete button is currently a button that is used to delete the specific todo from the database and I am unable to
+    * removeTodos: The deleting of the todo is partially working. When the delete button is clicked I am unable to lift the ID of the specific todo which causes all data from the state management to be removed
+    * updatedTodos: The update reducer is not working.
 
 ### Future Impovements/Additions
 1. Add the Socket.io library so that users can get live updates notifying them that there is are todos to be completed for the day

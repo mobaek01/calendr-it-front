@@ -13,20 +13,15 @@ export const todosSlice = createSlice({
         updatedTodos:(todosArr, action) => {
             return todosArr.map((todo) => {
                 if (todo.todo_id === action.payload.todo_id){
-                    return {
-                        ...todo,
-                        title: action.payload.title,
-                        description: action.payload.description,
-                        todo_date: action.payload.todo_date,
-                        start_time: action.payload.start_time,
-                        end_time: action.payload.end_time
+                    return [...todo, action.payload]
                     }
-                }
-                return todo
+                    return todo
             })
         }
     }
 })
+
+
 
 export const{ addTodos, removeTodos, updatedTodos } = todosSlice.actions
 export default todosSlice.reducer

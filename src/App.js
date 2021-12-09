@@ -1,12 +1,19 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { removeTodos } from './redux/reducer'
+
 // COMPONENTS //
 import TodoList from './components/TodoList'
 import TodoCalendar from './components/Calendar'
 import SideNav from './components/SideNav'
 
 const App = () => {
+
+    const todoArr = useSelector((state) => state.todos)
+    console.log(todoArr);
+    const dispatch = useDispatch()
 
     // backend urls
     // const backend_url = "http://localhost:3000"
@@ -61,7 +68,12 @@ const App = () => {
             .then((response) => {
                 // console.log(event.target.value);
                 getTodos()
+                reduxDelete()
             })
+    }
+
+    const reduxDelete = (event) => {
+        dispatch(removeTodos())
     }
 
     //=====================================================================//
