@@ -72,8 +72,8 @@ const App = () => {
             })
     }
 
-    const reduxDelete = (event) => {
-        dispatch(removeTodos())
+    const reduxDelete = (todoArr) => {
+        dispatch(removeTodos(todoArr))
     }
 
     //=====================================================================//
